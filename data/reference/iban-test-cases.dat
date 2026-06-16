@@ -1,21 +1,21 @@
-# format: expected(Y|N)|iban|description
-Y|GB82 WEST 1234 5698 7654 32|valid-gb-with-spaces
-Y|DE89370400440532013000|valid-de
-Y|FR1420041010050500013M02606|valid-fr
-Y|ES9121000418450200051332|valid-es
-Y|NL91ABNA0417164300|valid-nl
-Y|NO9386011117947|valid-no
-Y|DK5000400440116243|valid-dk
-Y|FI2112345600000785|valid-fi
-Y|GR1601101250000000012300695|valid-gr
-Y|GB29NWBK60161331926819|valid-gb-natwest
-N|1B82WEST12345698765432|invalid-country-code-character
-N|DE8A370400440532013000|invalid-check-digit-character
-N|XX12ABCDEF|too-short
-N|FR1420041010050500013M0260@|invalid-special-character
-N|1234567890123456|missing-country-letters
-N|GB00WEST12345698765432|invalid-gb-checksum
-N|DE00370400440532013000|invalid-de-checksum
-N|FR0020041010050500013M02606|invalid-fr-checksum
-N|ES0021000418450200051332|invalid-es-checksum
-N|NL00ABNA0417164300|invalid-nl-checksum
+# format: expected(Y|N)|iban|expected-reason|description
+Y|GB82 WEST 1234 5698 7654 32|OK|valid-gb-with-spaces
+Y|DE89370400440532013000|OK|valid-de
+Y|FR1420041010050500013M02606|OK|valid-fr
+Y|ES9121000418450200051332|OK|valid-es
+Y|NL91ABNA0417164300|OK|valid-nl
+Y|NO9386011117947|OK|valid-no
+Y|DK5000400440116243|OK|valid-dk
+Y|FI2112345600000785|OK|valid-fi
+Y|GR1601101250000000012300695|OK|valid-gr
+Y|GB29NWBK60161331926819|OK|valid-gb-natwest
+N|1B82WEST12345698765432|Country code must be letters|invalid-country-code-character
+N|DE8A370400440532013000|Check digits must be numeric|invalid-check-digit-character
+N|XX12ABCDEF|IBAN length out of range|too-short
+N|FR1420041010050500013M0260@|IBAN contains invalid characters|invalid-special-character
+N|1234567890123456|Country code must be letters|missing-country-letters
+N|GB00WEST12345698765432|IBAN checksum failed|invalid-gb-checksum
+N|DE00370400440532013000|IBAN checksum failed|invalid-de-checksum
+N|FR0020041010050500013M02606|IBAN checksum failed|invalid-fr-checksum
+N|ES0021000418450200051332|IBAN checksum failed|invalid-es-checksum
+N|NL00ABNA0417164300|IBAN checksum failed|invalid-nl-checksum
