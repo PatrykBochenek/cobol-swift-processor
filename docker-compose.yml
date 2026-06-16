@@ -1,0 +1,9 @@
+services:
+  processor:
+    build: .
+    volumes:
+      - ./data/input:/app/data/input
+      - ./data/output:/app/data/output
+      - ./samples:/app/samples
+    environment:
+      - BATCH_FILE=data/input/messages/batch.txt
