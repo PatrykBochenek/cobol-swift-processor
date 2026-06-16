@@ -22,3 +22,7 @@ N|DE00370400440532013000|IBAN checksum failed|invalid-de-checksum
 N|FR0020041010050500013M02606|IBAN checksum failed|invalid-fr-checksum
 N|ES0021000418450200051332|IBAN checksum failed|invalid-es-checksum
 N|NL00ABNA0417164300|IBAN checksum failed|invalid-nl-checksum
+N|DE2437040044A532013000|Country BBAN must be numeric|invalid-de-letter-in-bban
+N|ES80210004184502A0051332|Country BBAN must be numeric|invalid-es-letter-in-bban
+N|NO82860111A7947|Country BBAN must be numeric|invalid-no-letter-in-bban
+N|FI59123456A0000785|Country BBAN must be numeric|invalid-fi-letter-in-bban

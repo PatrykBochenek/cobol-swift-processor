@@ -140,6 +140,19 @@ VALIDATE-COUNTRY-RULES.
 
     IF WS-CLEAN-LEN NOT = WS-EXPECTED-LEN
         MOVE "IBAN length does not match country" TO LK-ERROR-MSG
+        EXIT PARAGRAPH
+    END-IF
+
+    IF WS-COUNTRY-CODE = "DE" OR
+       WS-COUNTRY-CODE = "ES" OR
+       WS-COUNTRY-CODE = "NO" OR
+       WS-COUNTRY-CODE = "FI"
+        PERFORM VARYING WS-INDEX FROM 5 BY 1 UNTIL WS-INDEX > WS-CLEAN-LEN
+            IF WS-CLEAN-IBAN(WS-INDEX:1) IS NOT NUMERIC
+                MOVE "Country BBAN must be numeric" TO LK-ERROR-MSG
+                EXIT PARAGRAPH
+            END-IF
+        END-PERFORM
     END-IF.
 
 BUILD-REARRANGED-IBAN.
