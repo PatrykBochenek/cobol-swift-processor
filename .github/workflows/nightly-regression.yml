@@ -1,0 +1,30 @@
+name: Nightly Regression
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    name: Run nightly container regression
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker compose build processor
+
+      - name: Execute processor
+        run: docker compose run --rm processor
+
+      - name: Upload output artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-output
+          path: data/output
+          if-no-files-found: warn
